@@ -1,12 +1,18 @@
 import "./App.css";
+import React from "react";
+import {Routes, Route} from "react-router-dom";
+import Home from "./Components/Home";
+import About from "./Components/About";
+import Contact from "./Components/Contact";
 
 function App() {
   return (
-    <>
-      <div className="text-3xl font-bold underline">
-        Hello, how are you Little
-      </div>
-    </>
+    
+    <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/about" element={<About />} />
+    <Route path="/contact" element={<Contact />} />
+    </Routes>      
   );
 }
 
