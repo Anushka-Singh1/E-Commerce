@@ -22,10 +22,10 @@ function Navbar() {
   ];
 
   return (
-    <div className='bg-gradient-to-r from-amber-200 to-amber-400 h-[10vh] flex justify-between items-center px-[2rem] fixed top-0 left-2 right-2 z-[99999] mx-auto rounded-lg mt-[5vh] mx-[2.5%]'>
+    <div className='bg-gradient-to-r from-fuchsia-300 to-fuchsia-900 h-[10vh] flex justify-between items-center px-[2rem] fixed top-0 left-2 right-2 z-[99999] mx-auto rounded-lg mt-[5vh] mx-[2.5%]'>
       <div className='flex items-center'>
         <NavLink to="/">
-          <SiPrestashop className='h-12 w-12' />
+          <SiPrestashop className='h-8 w-10' />
         </NavLink>
       </div>
       
