@@ -63,7 +63,7 @@ function Navbar() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className='absolute top-0 left-0 w-full h-screen bg-amber-300 flex flex-col items-center justify-center z-[100000]'>
+        <div className='absolute top-0 left-0 w-full h-screen bg-fuchsia-900 flex flex-col items-center justify-center z-[100000]'>
           {navItems.map((item, index) => (
             <NavLink 
               to={item.to} 
