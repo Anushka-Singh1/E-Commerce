@@ -27,7 +27,7 @@ export const Detail = [
     {
         name: "feedback",
         label: "Feedback",
-        type: "text",
+        type: "textarea",
         placeholder: "Enter feedback",
     },
 ];
