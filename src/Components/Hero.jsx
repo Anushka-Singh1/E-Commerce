@@ -5,7 +5,7 @@ function Hero({ myData }) {
   const { heading } = myData;
   return (
     <>
-      <div className="container mx-auto mt-40 md:mt-40 lg:mt-40">
+      <div className="mx-[5vh] mt-40 md:mt-40 lg:mt-40">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 bg-fuchsia-100 w-full p-10 rounded-lg">
           <div className="hero-section-data p-8">
             <h1 className="text-4xl font-bold mt-12 md:mt-6">{heading}</h1>
