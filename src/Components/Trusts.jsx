@@ -16,7 +16,6 @@ function Trusts() {
     { icon: <FaReddit className='h-6 w-6' />, label: 'Fedex.io' },
     { icon: <FaHive className='h-6 w-6' />, label: 'FaHive.io' },
   ];
-
   return (
     <div className='flex flex-col md:flex-row justify-between p-4 mx-auto mt-4 bg-fuchsia-100 md:mx-24 gap-3 rounded-lg'>
       {trustItems.map((item, index) => (

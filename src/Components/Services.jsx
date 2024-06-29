@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const style1= "flex flex-col items-start m-4 md:m-14";
+const style1= "flex flex-col items-start m-4 md:m-14 sm:m-10";
 const style2="flex flex-col gap-y-10 items-center m-4 md:m-0";
 const style3="flex flex-col items-end m-4 md:m-14";
 
