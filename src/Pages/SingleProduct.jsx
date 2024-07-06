@@ -43,7 +43,7 @@ function SingleProduct() {
         </div>
 
         {/* Right Side: Details */}
-        <div className="w-full lg:w-1/2 bg-white p-6 rounded-lg shadow-md">
+        <div className="w-full lg:w-1/2 bg-white p-6 rounded-lg shadow-md mr-[1.5%]">
           <h1 className="text-2xl mb-4">{name}</h1>
           <p className="text-gray-700 mb-4">Rating: <span className="font-bold">{stars} Stars</span></p>
           <p className="text-gray-700 mb-4">Reviews: <span className="font-bold">{reviews}</span></p>
