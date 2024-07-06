@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import { useProductContext } from '../Context/ProductContext';
+import PageNavigation from '../Components/PageNavigation';
 
 
 const API ="https://api.pujakaitem.com/api/products";
@@ -15,8 +16,8 @@ function SingleProduct() {
     getSingleProduct(`${API}?id=${id}`);
   }, [])
   return (
-    <div>
-      SingleProduct
+    <div className='h-[100vh]'>
+      <PageNavigation title={name}/>
     </div>
   )
 }
