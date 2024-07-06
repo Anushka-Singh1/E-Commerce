@@ -1,6 +1,6 @@
 import React from 'react'
 
-function SinglePageImage() {
+function SinglePageImage({images}) {
   return (
     <div>
       image
