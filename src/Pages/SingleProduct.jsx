@@ -7,6 +7,7 @@ import FormatPrice from '../Helper/PriceFormat';
 import { FaTruckFast } from "react-icons/fa6";
 import { TbReplace } from "react-icons/tb";
 import { PiShieldCheckeredFill } from "react-icons/pi";
+import Star from '../Components/Star';
 
 const API = "https://api.pujakaitem.com/api/products";
 
@@ -45,8 +46,9 @@ function SingleProduct() {
         {/* Right Side: Details */}
         <div className="w-full lg:w-1/2 bg-white p-6 rounded-lg shadow-md mr-[1.5%]">
           <h1 className="text-2xl mb-4">{name}</h1>
-          <p className="text-gray-700 mb-4">Rating: <span className="font-bold">{stars} Stars</span></p>
-          <p className="text-gray-700 mb-4">Reviews: <span className="font-bold">{reviews}</span></p>
+          <Star stars={stars} reviews={reviews}/>
+          {/* <p className="text-gray-700 mb-4"><span className="font-bold">{stars} Stars</span></p>
+          <p className="text-gray-700 mb-4"><span className="font-bold">{reviews} reviews</span></p> */}
           <p className="text-gray-700 mb-4">MRP: <span className="font-bold"><del> <FormatPrice price={price + 2500} /></del></span></p>
           <p className="text-fuchsia-600 mb-4">Deal of the Day: <span className="font-bold"><FormatPrice price={price} /></span></p>
           <p className="text-gray-700 mb-4">{description}</p>
