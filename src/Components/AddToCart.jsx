@@ -1,16 +1,26 @@
 import React, { useState } from 'react';
+import CartAmountToggle from './CartAmountToggle';
 
 function AddToCart({ product }) {
     const { id, colors, stock } = product;
   const [activeColor, setActiveColor] = useState(colors[0]);
- 
+  const [amount, setAmount] = useState(1);
 
   const handleColorClick = (color) => {
     setActiveColor(color);
   };
 
+
+  const setDecrease = () => {
+    amount >1 ? setAmount(amount - 1) : setAmount(1);
+  };
+
+  const setIncrease = () => {
+    amount < stock ? setAmount(amount + 1) : setAmount(stock);
+  }
+
   return (
-    <div>
+    <>
       <p className="mb-4">Colors:</p>
       <div className="flex gap-2">
         {colors.map((curColor, index) => (
@@ -23,7 +33,13 @@ function AddToCart({ product }) {
           </button>
         ))}
       </div>
-    </div>
+      {/** Add to Cart */}
+      <CartAmountToggle
+       amount={amount}
+       setDecrease={setDecrease}
+       setIncrease={setIncrease}
+       />
+    </>
   );
 }
 
