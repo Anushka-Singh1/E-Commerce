@@ -8,6 +8,7 @@ import { FaTruckFast } from "react-icons/fa6";
 import { TbReplace } from "react-icons/tb";
 import { PiShieldCheckeredFill } from "react-icons/pi";
 import Star from '../Components/Star';
+import AddToCart from '../Components/AddToCart';
 
 const API = "https://api.pujakaitem.com/api/products";
 
@@ -63,7 +64,10 @@ function SingleProduct() {
           </div>
           <p className="text-gray-700 mb-4">Available: <span className="font-bold">{stock > 0 ? 'In Stock' : 'Out of Stock'}</span></p>
           <p className="text-gray-700 mb-4">Brand: <span className="font-bold">{company}</span></p>
+          <hr className="border-2 border-black my-4 w-90 max-w-[100%]"/>
+          {stock>0 && <AddToCart product={singleProduct} />}
         </div>
+       
       </div>
     </div>
   );

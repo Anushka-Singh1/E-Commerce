@@ -26,11 +26,11 @@ function SinglePageImage({ images=[] }) {
         ))}
       </div>
       {/* Right Side: Selected Image */}
-      <div className="flex-1 flex justify-center items-center">
+      <div className="flex-1 flex justify-center items-center mb-20">
         <img
           src={images[selectedImageIndex]?.url} 
           alt={`Selected product image`}
-          className="w-[50%] h-[50%] object-cover rounded-lg shadow-md"
+          className="w-[50%] h-[50%] object-cover rounded-lg shadow-md "
         />
       </div>
     </div>
