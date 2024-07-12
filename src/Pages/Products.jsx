@@ -13,7 +13,7 @@ function Products() {
         <div className="lg:col-span-5 bg-gray-100 sticky rounded-xl">
           <div className="product-view-sort">
             <div className="sticky top-0 bg-gray-800 p-4 rounded-xl">
-              <div className="sort-filter h-24 lg:h-28 rounded-xl">
+              <div className="sort-filter h-2 lg:h-2 rounded-xl">
                 <SortSection />
               </div>
             </div>
