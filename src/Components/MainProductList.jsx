@@ -6,6 +6,7 @@ import ListView from './ListView';
 function MainProductList() {
   const { filter_products, grid_view } = useFilterContext();
 
+
   if (grid_view) {
     return <GridView products={filter_products} />;
   } else {
