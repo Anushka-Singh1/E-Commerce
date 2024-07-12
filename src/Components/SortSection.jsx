@@ -4,7 +4,7 @@ import { MdViewList } from "react-icons/md";
 import { useFilterContext } from '../Context/FilterContext';
 
 function SortSection() {
-  const { grid_view, setGridView, setListView, filter_products } = useFilterContext();
+  const { grid_view, setGridView, setListView, filter_products, sorting } = useFilterContext();
   
   return (
     <div className="flex flex-row justify-between items-center w-full">
@@ -19,9 +19,19 @@ function SortSection() {
         </button>
       </div>
       <div className="w-1/4 text-center hidden md:block">
-        <p>{filter_products.length} Products Found</p>
+        <p>{filter_products ? filter_products.length : 0} Products Found</p>
       </div>
-      <div className="w-1/4 text-right mr-4">abc</div>
+      <div className="w-1/4 text-right mr-8">
+        <form action='#'>
+          <label htmlFor='sort'></label>
+          <select name='sort' id='sort' className='p-2 rounded-lg' onChange={sorting}>
+            <option value='price-lowest'>Price (Lowest)</option>
+            <option value='price-highest'>Price (Highest)</option>
+            <option value='name-a'>Name (A-Z)</option>
+            <option value='name-z'>Name (Z-A)</option>
+          </select>
+        </form>
+      </div>
     </div>
   );
 }
