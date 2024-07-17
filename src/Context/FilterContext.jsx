@@ -25,18 +25,23 @@ const FilterContextProvider = ({ children }) => {
     }; 
 
   //sorting function
-  const sorting = () => {
-    dispatch({ type: "GET_SORT_VALUE" }); 
+  const sorting = (event) => {
+    let userValue = event.target.value;
+    dispatch({ type: "GET_SORT_VALUE", payload: userValue }); 
   };
+
+  //sorting function useEffect
+  useEffect(() => {
+    dispatch({ type: "SORTING_PRODUCTS" });
+  }, [products, state.sorting_value]);
+
+
+  // TO load all the products for list and grid view
   useEffect(() => {
     dispatch({ type: "Load_Filter_Products", payload: products });
   }, [products]);
 
-  //sorting function useEffect
-  useEffect(() => {
-    dispatch({ type: "SORTING_PRODUCTS", payload: products });
-  }, [state.sorting_value]);
-
+  
   return (
     <FilterContext.Provider value={{ ...state , setGridView, setListView, sorting}}>
       {children}

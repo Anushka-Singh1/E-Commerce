@@ -10,39 +10,36 @@ const FilterReducer = (state, action) => {
         return { ...state, grid_view: false };
     
     case "GET_SORT_VALUE":
-        let userSortValue = document.getElementById('sort');
-        let sortValue = userSortValue.options[userSortValue.selectedIndex].value;
         return{
             ...state,
-            sorting_value: sortValue,
+            sorting_value: action.payload,
         };
     
     case "SORTING_PRODUCTS":
         let newSortData;
-        let tempSortProduct=[...action.payload];
 
-        if(state.sorting_value === "name-a"){
-            newSortData = tempSortProduct.sort((a,b) =>
-                 a.name.localeCompare(b.name)
-                );
-         }
-         if(state.sorting_value === "name-z"){
-            newSortData = tempSortProduct.sort((a,b) =>
-                 b.name.localeCompare(a.name)
-                );
-         }
-            if(state.sorting_value === "price-lowest"){
-                const sortingProducts=(a,b) =>{
-                  return  a.price - b.price
-                };
-                newSortData = tempSortProduct.sort(sortingProducts);
+        const{filter_products, sorting_value} = state;
+        let tempSortProduct=[...filter_products];
+    
+        const sortingProducts=(a,b) =>{
+            if(sorting_value === "price-lowest")
+            {
+                return a.price - b.price;
             }
-            if(state.sorting_value === "price-highest"){
-                const sortingProducts=(a,b) =>{
-                  return  b.price - a.price
-                };
-                newSortData = tempSortProduct.sort(sortingProducts);
+            if(sorting_value === "price-highest")
+            {
+                return b.price - a.price;
             }
+            if(sorting_value === "name-a")
+            {
+                return a.name.localeCompare(b.name);
+            }
+            if(sorting_value === "name-z")
+            {
+                return b.name.localeCompare(a.name);
+            }
+        };
+        newSortData = tempSortProduct.sort(sortingProducts);
         return{
             ...state,
             filter_products: newSortData,
