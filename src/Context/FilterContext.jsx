@@ -11,6 +11,8 @@ const initialState = {
   sorting_value:"lowest",
   filters:{
     text: "",
+    category: "All",
+    company: "All",
   },
 };
 
@@ -51,6 +53,8 @@ const FilterContextProvider = ({ children }) => {
     let value = event.target.value;
     return dispatch({type: "UPDATE_FILTER_VALUE", payload: {name, value}});
   }
+
+
   
   return (
     <FilterContext.Provider value={{ ...state , setGridView, setListView, sorting, updateFilterValue}}>
