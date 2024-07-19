@@ -7,6 +7,7 @@ function FilterSection() {
     filters: { text, category, company, colors, price , minPrice, maxPrice },
     updateFilterValue,
     all_products,
+    clearFilters,
   } = useFilterContext();
 
   // To get data of each field
@@ -86,56 +87,62 @@ function FilterSection() {
             </select>
           </form>
         </div>
-        <div>
+      </div>
+      <div>
         <h3 className='text-center mb-2 mt-2 font-serif'>Colors</h3>
-<div className="flex flex-wrap justify-center">
-  {colorsData.map((curElem, index) => {
-    if(curElem==="All"){
-      return (
-        <button
-          key={index}
-          type='button'
-          onClick={updateFilterValue}
-          name="colors"
-          value={curElem}
-          className='font-serif'
-        >
-          {curElem}
-        </button>
-      );
-    }
-    return (
-      <button 
-        key={index}
-        type='button'
-        onClick={updateFilterValue}
-        name="colors"
-        value={curElem}
-        className=" font-serif rounded-full h-4 w-4 mx-1 my-1 "
-        style={{
-          backgroundColor: curElem
-        }}>
-      </button>);
-            })}
-            </div>
+        <div className="flex flex-wrap justify-center">
+          {colorsData.map((curElem, index) => {
+            if(curElem==="All"){
+              return (
+                <button
+                  key={index}
+                  type='button'
+                  onClick={updateFilterValue}
+                  name="colors"
+                  value={curElem}
+                  className='font-serif'
+                >
+                  {curElem}
+                </button>
+              );
+            }
+            return (
+              <button 
+                key={index}
+                type='button'
+                onClick={updateFilterValue}
+                name="colors"
+                value={curElem}
+                className=" font-serif rounded-full h-4 w-4 mx-1 my-1 "
+                style={{
+                  backgroundColor: curElem
+                }}>
+              </button>);
+          })}
         </div>
+      </div>
       <div>
         <h3 className='text-center mb-2 mt-2 font-serif'>Price</h3>
         <div className="flex flex-wrap justify-center">
-        <p><FormatPrice price={price}/></p>
-        <input
-          type='range'
-          name='price'
-          min={minPrice}
-          max={maxPrice}
-          value={price}
-          onChange={updateFilterValue}
-        />
-
+          <p><FormatPrice price={price}/></p>
+          <input
+            type='range'
+            name='price'
+            min={minPrice}
+            max={maxPrice}
+            value={price}
+            onChange={updateFilterValue}
+          />
         </div>
       </div>
-      
-       </div>
+      <div className="flex flex-wrap justify-center">
+        <button 
+          className='rounded-lg bg-fuchsia-800 font-serif p-1' 
+          onClick={clearFilters}
+        >
+          Clear Filter
+        </button>
+      </div>
     </>
   );
 }
