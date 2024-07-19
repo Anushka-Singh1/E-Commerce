@@ -13,6 +13,7 @@ const initialState = {
     text: "",
     category: "All",
     company: "All",
+    colors: "All",
   },
 };
 

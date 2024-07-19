@@ -3,7 +3,7 @@ import { useFilterContext } from '../Context/FilterContext';
 
 function FilterSection() {
   const {
-    filters: { text, category, company },
+    filters: { text, category, company, colors },
     updateFilterValue,
     all_products,
   } = useFilterContext();
@@ -13,12 +13,18 @@ function FilterSection() {
     let newVal = data.map((curElem) => {
       return curElem[property];
     });
-    return ["All", ...new Set(newVal)]; // Using set to get unique data
+    if(property === 'colors') {
+     return (newVal=["All", ...new Set([].concat(...newVal))]);
+    }
+    else{
+      return (newVal = ["All", ...new Set(newVal)]);
+    }
   };
-
+ 
   // Filter section unique data
   const categoryOnlyData = getUniqueData(all_products, "category");
   const companyData = getUniqueData(all_products, "company");
+  const colorsData = getUniqueData(all_products, "colors");
 
   return (
     <>
@@ -80,7 +86,29 @@ function FilterSection() {
             </select>
           </form>
         </div>
-      </div>
+        <div>
+        <h3 className='text-center mb-2 mt-2 font-serif'>Colors</h3>
+<div className="flex flex-wrap justify-center">
+  {colorsData.map((curElem, index) => {
+    const isSelected = colors === curElem;
+    return (
+      <button 
+        key={index}
+        type='button'
+        onClick={updateFilterValue}
+        name="colors"
+        value={curElem}
+        className={`focus:outline-none focus:border-fuchsia-800 focus:ring-0 my-1 font-serif rounded-full h-4 w-4 mx-1 ${isSelected ? 'ring-2 ring-fuchsia-800' : ''}`}
+        style={{
+          backgroundColor: curElem
+        }}
+      >
+      </button>
+              );
+            })}
+            </div>
+        </div>
+       </div>
     </>
   );
 }
