@@ -1,9 +1,10 @@
 import React from 'react';
 import { useFilterContext } from '../Context/FilterContext';
+import FormatPrice from '../Helper/PriceFormat';
 
 function FilterSection() {
   const {
-    filters: { text, category, company, colors },
+    filters: { text, category, company, colors, price , minPrice, maxPrice },
     updateFilterValue,
     all_products,
   } = useFilterContext();
@@ -77,8 +78,7 @@ function FilterSection() {
                     key={index}
                     name="company"
                     value={curElem}
-                    className={company === curElem ? 'bg-fuchsia-800 text-white' : ''}
-                  >
+                    className={company === curElem ? 'bg-fuchsia-800 text-white' : ''}>
                     {curElem}
                   </option>
                 );
@@ -90,7 +90,20 @@ function FilterSection() {
         <h3 className='text-center mb-2 mt-2 font-serif'>Colors</h3>
 <div className="flex flex-wrap justify-center">
   {colorsData.map((curElem, index) => {
-    const isSelected = colors === curElem;
+    if(curElem==="All"){
+      return (
+        <button
+          key={index}
+          type='button'
+          onClick={updateFilterValue}
+          name="colors"
+          value={curElem}
+          className='font-serif'
+        >
+          {curElem}
+        </button>
+      );
+    }
     return (
       <button 
         key={index}
@@ -98,16 +111,30 @@ function FilterSection() {
         onClick={updateFilterValue}
         name="colors"
         value={curElem}
-        className={`focus:outline-none focus:border-fuchsia-800 focus:ring-0 my-1 font-serif rounded-full h-4 w-4 mx-1 ${isSelected ? 'ring-2 ring-fuchsia-800' : ''}`}
+        className=" font-serif rounded-full h-4 w-4 mx-1 my-1 "
         style={{
           backgroundColor: curElem
-        }}
-      >
-      </button>
-              );
+        }}>
+      </button>);
             })}
             </div>
         </div>
+      <div>
+        <h3 className='text-center mb-2 mt-2 font-serif'>Price</h3>
+        <div className="flex flex-wrap justify-center">
+        <p><FormatPrice price={price}/></p>
+        <input
+          type='range'
+          name='price'
+          min={minPrice}
+          max={maxPrice}
+          value={price}
+          onChange={updateFilterValue}
+        />
+
+        </div>
+      </div>
+      
        </div>
     </>
   );
