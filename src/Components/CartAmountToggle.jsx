@@ -10,7 +10,7 @@ function CartAmountToggle({amount, setDecrease, setIncrease}) {
         <span>{amount}</span>
         <button onClick={setIncrease} className=''><FaPlus className='h-4'/></button>
       </div>
-      <NavLink to='/cart' className='bg-fuchsia-800 text-white px-4 py-2 rounded-lg mt-4'>Add to Cart</NavLink>
+      {/* <NavLink to='/cart' className='bg-fuchsia-800 text-white px-4 py-2 rounded-lg mt-4'>Add to Cart</NavLink> */}
     </>
   )
 }
