@@ -4,8 +4,9 @@ import FormatPrice from '../Helper/PriceFormat';
 import CartAmountToggle from '../Components/CartAmountToggle';
 import { FaTrash } from 'react-icons/fa';
 
+
 function Cart() {
-  const { cart } = useCartContext();
+  const { cart, removeItem } = useCartContext();
 
   const setDecrease = () => {
     // amount > 1 ? setAmount(amount - 1) : setAmount(1);
@@ -51,7 +52,7 @@ function Cart() {
                 /></p>
                 <p className='text-lg hidden sm:block'><FormatPrice price={price * amount}/></p>
                 <div className='flex justify-left'>
-                  <button>
+                  <button onClick={()=>removeItem(id)}>
                     <FaTrash className='text-red-500 hover:text-red-700 cursor-pointer' />
                   </button>
                 </div>

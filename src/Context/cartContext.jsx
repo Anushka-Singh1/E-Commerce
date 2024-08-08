@@ -14,12 +14,14 @@ const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const addToCart = (id, amount, activeColor, product) => {
-    console.log('Dispatching:', { id, amount, activeColor, product }); //debugging
+    // console.log('Dispatching:', { id, amount, activeColor, product }); //debugging
     dispatch({ type: 'ADD_TO_CART', payload: { id, amount, activeColor, product } });
   };
-
+const  removeItem = (id) => {
+    dispatch({ type: 'REMOVE_ITEM', payload: id });
+  };
   return (
-    <CartContext.Provider value={{ ...state, addToCart }}>
+    <CartContext.Provider value={{ ...state, addToCart, removeItem }}>
       {children}
     </CartContext.Provider>
   );
