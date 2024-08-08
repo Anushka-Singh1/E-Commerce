@@ -24,6 +24,12 @@ if (action.type === 'REMOVE_ITEM') {
       cart: updatedCart,
     };
   }
+    if (action.type === 'CLEAR_CART') {
+        return {
+        ...state,
+        cart: [],
+    };
+}
   return state;
 }
 

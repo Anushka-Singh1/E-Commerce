@@ -3,10 +3,10 @@ import { useCartContext } from '../Context/cartContext';
 import FormatPrice from '../Helper/PriceFormat';
 import CartAmountToggle from '../Components/CartAmountToggle';
 import { FaTrash } from 'react-icons/fa';
-
+import { NavLink } from 'react-router-dom';
 
 function Cart() {
-  const { cart, removeItem } = useCartContext();
+  const { cart, removeItem, clearCart } = useCartContext();
 
   const setDecrease = () => {
     // amount > 1 ? setAmount(amount - 1) : setAmount(1);
@@ -15,6 +15,18 @@ function Cart() {
   const setIncrease = () => {
     // amount < stock ? setAmount(amount + 1) : setAmount(stock);
   };
+  if(cart.length === 0) {
+    return (
+      <div className='flex flex-col items-center justify-center h-screen'>
+        <h2 className='text-2xl font-semibold'>Your cart is empty</h2>
+        <NavLink to='/Products'>
+          <button className='bg-fuchsia-800 text-white px-4 py-2 rounded-lg mt-4'>
+            Go to Products
+          </button>
+        </NavLink>
+      </div>
+    );
+  }
 
   return (
     <div className='flex flex-col min-h-screen'>
@@ -52,13 +64,24 @@ function Cart() {
                 /></p>
                 <p className='text-lg hidden sm:block'><FormatPrice price={price * amount}/></p>
                 <div className='flex justify-left'>
-                  <button onClick={()=>removeItem(id)}>
+                  <button onClick={() => removeItem(id)}>
                     <FaTrash className='text-red-500 hover:text-red-700 cursor-pointer' />
                   </button>
                 </div>
               </div>
             );
           })}
+        </div>
+        <hr className="border-t-2 border-gray-400 my-4 mx-10" />
+        <div className="flex justify-between mx-10">
+          <NavLink to='/Products'>
+            <button className='bg-fuchsia-800 text-white px-4 py-2 rounded-lg'>
+              Continue Shopping
+            </button>
+          </NavLink>
+          <button onClick={clearCart} className="bg-fuchsia-800 text-white px-4 py-2 rounded-lg">
+            Clear Cart
+          </button>
         </div>
       </div>
     </div>
