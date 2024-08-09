@@ -104,6 +104,19 @@ if(action.type=='CART_TOTAL_ITEM')
             total_item: updatedCartValue,
         };
 }
+if(action.type=='CART_TOTAL_PRICE')
+{
+    let total_price=state.cart.reduce((initialVal, item) => {
+        let { amount, price } = item;
+        initialVal += amount * price;
+        return initialVal;
+      }, 0);
+        return {
+            ...state,
+            total_amount: total_price,
+        };
+
+}
   return state;
 }
 

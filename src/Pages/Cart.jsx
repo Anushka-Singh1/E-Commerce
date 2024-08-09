@@ -6,7 +6,7 @@ import { FaTrash } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 
 function Cart() {
-  const { cart, removeItem, clearCart, setDecrease, setIncrease } = useCartContext();
+  const { cart, removeItem, clearCart, setDecrease, setIncrease, total_amount, shipping_fee } = useCartContext();
 
   // const setDecrease = () => {
   //   // amount > 1 ? setAmount(amount - 1) : setAmount(1);
@@ -83,6 +83,24 @@ function Cart() {
             Clear Cart
           </button>
         </div>
+        <div className="flex justify-end mx-10 mt-4">
+  <div className="space-y-4 bg-gray-100 p-4 font-serif ">
+    <div className="flex justify-between">
+      <p>Subtotal:</p>
+      <p><FormatPrice price={total_amount}/></p>
+    </div>
+    <div className="flex justify-between gap-4">
+      <p>Shipping Fee:</p>
+      <p><FormatPrice price={shipping_fee}/></p>
+    </div>
+    <hr className="border-t-2 border-gray-400 my-4 " />
+    <div className="flex justify-between">
+      <p>Total:</p>
+      <p><FormatPrice price={total_amount + shipping_fee}/></p>
+    </div>
+  </div>
+</div>
+
       </div>
     </div>
   );
