@@ -58,7 +58,7 @@ if (action.type === 'REMOVE_ITEM') {
         cart: [],
     };
 }
-if(action.type=='DECREASE'){
+if(action.type==='DECREASE'){
     let updatedCart = state.cart.map((item) => {
         if (item.id === action.payload) {
           let newAmount = item.amount - 1;
@@ -75,7 +75,7 @@ if(action.type=='DECREASE'){
         cart: updatedCart,
       };
 }
-if(action.type=='INCREASE'){
+if(action.type==='INCREASE'){
     let updatedCart = state.cart.map((item) => {
         if (item.id === action.payload) {
           let newAmount = item.amount + 1;
@@ -92,7 +92,7 @@ if(action.type=='INCREASE'){
         cart: updatedCart,
       };
 }
-if(action.type=='CART_TOTAL_ITEM')
+if(action.type==='CART_TOTAL_ITEM')
 {
     let updatedCartValue = state.cart.reduce((initialVal, item) => {
         let { amount } = item;
@@ -104,7 +104,7 @@ if(action.type=='CART_TOTAL_ITEM')
             total_item: updatedCartValue,
         };
 }
-if(action.type=='CART_TOTAL_PRICE')
+if(action.type==='CART_TOTAL_PRICE')
 {
     let total_price=state.cart.reduce((initialVal, item) => {
         let { amount, price } = item;
@@ -118,6 +118,7 @@ if(action.type=='CART_TOTAL_PRICE')
 
 }
   return state;
-}
+};
 
 export default CartReducer;
+
