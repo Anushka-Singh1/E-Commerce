@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaMinus, FaPlus } from 'react-icons/fa6'
-import { NavLink } from 'react-router-dom'
+// import { NavLink } from 'react-router-dom'
 
 function CartAmountToggle({amount, setDecrease, setIncrease}) {
   return (

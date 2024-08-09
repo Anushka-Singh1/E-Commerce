@@ -57,11 +57,11 @@ function Cart() {
                   </div>
                 </div>
                 <p className='text-lg hidden sm:block'><FormatPrice price={price}/></p>
-                <p className='text-lg hidden sm:block'><CartAmountToggle
+                <div className='text-lg hidden sm:block'><CartAmountToggle
                   amount={amount}
                   setDecrease={setDecrease}
                   setIncrease={setIncrease}
-                /></p>
+                /></div>
                 <p className='text-lg hidden sm:block'><FormatPrice price={price * amount}/></p>
                 <div className='flex justify-left'>
                   <button onClick={() => removeItem(id)}>
