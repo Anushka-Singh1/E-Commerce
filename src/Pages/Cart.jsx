@@ -6,15 +6,15 @@ import { FaTrash } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 
 function Cart() {
-  const { cart, removeItem, clearCart } = useCartContext();
+  const { cart, removeItem, clearCart, setDecrease, setIncrease } = useCartContext();
 
-  const setDecrease = () => {
-    // amount > 1 ? setAmount(amount - 1) : setAmount(1);
-  };
+  // const setDecrease = () => {
+  //   // amount > 1 ? setAmount(amount - 1) : setAmount(1);
+  // };
 
-  const setIncrease = () => {
-    // amount < stock ? setAmount(amount + 1) : setAmount(stock);
-  };
+  // const setIncrease = () => {
+  //   // amount < stock ? setAmount(amount + 1) : setAmount(stock);
+  // };
   if(cart.length === 0) {
     return (
       <div className='flex flex-col items-center justify-center h-screen'>
@@ -59,8 +59,8 @@ function Cart() {
                 <p className='text-lg hidden sm:block'><FormatPrice price={price}/></p>
                 <div className='text-lg hidden sm:block'><CartAmountToggle
                   amount={amount}
-                  setDecrease={setDecrease}
-                  setIncrease={setIncrease}
+                  setDecrease={()=>setDecrease(id)}
+                  setIncrease={()=>setIncrease(id)}
                 /></div>
                 <p className='text-lg hidden sm:block'><FormatPrice price={price * amount}/></p>
                 <div className='flex justify-left'>
