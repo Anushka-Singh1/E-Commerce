@@ -44,6 +44,7 @@ const initialState = {
 
   //to add the data in the local storage
   useEffect(() => {
+    dispatch({ type: 'CART_TOTAL_ITEM' });
     localStorage.setItem('cart', JSON.stringify(state.cart));
   }, [state.cart]);
 

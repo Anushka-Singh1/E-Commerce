@@ -8,9 +8,11 @@ import { TbPhoneCalling } from "react-icons/tb";
 import { BsCart4 } from "react-icons/bs";
 import { PiHamburgerLight } from "react-icons/pi";
 import { MdOutlineClose } from "react-icons/md";
+import { useCartContext } from "../Context/cartContext";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage menu open/close
+  const {total_item} = useCartContext();
 
   const navItems = [
     { to: "/", icon: <FaHome className="h-6 w-8" />, label: "Home" },
@@ -25,7 +27,16 @@ function Navbar() {
       icon: <TbPhoneCalling className="h-6 w-8" />,
       label: "Contact",
     },
-    { to: "/Cart", icon: <BsCart4 className="h-6 w-8" />, label: "Cart" },
+    {  to: "/Cart",
+      icon: (
+        <div className="relative">
+          <BsCart4 className="h-6 w-8" />
+          <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+            {total_item}
+          </span>
+        </div>
+      ),
+      label: "Cart", },
     { to: "/login", icon: null, label: "Login", isButton: true },
   ];
 

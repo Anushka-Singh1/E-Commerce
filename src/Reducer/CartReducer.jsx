@@ -92,6 +92,18 @@ if(action.type=='INCREASE'){
         cart: updatedCart,
       };
 }
+if(action.type=='CART_TOTAL_ITEM')
+{
+    let updatedCartValue = state.cart.reduce((initialVal, item) => {
+        let { amount } = item;
+        initialVal += amount;
+        return initialVal;
+      }, 0);
+        return {
+            ...state,
+            total_item: updatedCartValue,
+        };
+}
   return state;
 }
 
