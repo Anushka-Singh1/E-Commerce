@@ -9,10 +9,12 @@ import { BsCart4 } from "react-icons/bs";
 import { PiHamburgerLight } from "react-icons/pi";
 import { MdOutlineClose } from "react-icons/md";
 import { useCartContext } from "../Context/cartContext";
+import { useAuth0 } from "@auth0/auth0-react"; // Import useAuth0
 
 function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage menu open/close
-  const {total_item} = useCartContext();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { total_item } = useCartContext();
+  const { loginWithRedirect, logout, isAuthenticated } = useAuth0(); // Destructure loginWithRedirect, logout, and isAuthenticated
 
   const navItems = [
     { to: "/", icon: <FaHome className="h-6 w-8" />, label: "Home" },
@@ -27,7 +29,8 @@ function Navbar() {
       icon: <TbPhoneCalling className="h-6 w-8" />,
       label: "Contact",
     },
-    {  to: "/Cart",
+    {
+      to: "/Cart",
       icon: (
         <div className="relative">
           <BsCart4 className="h-6 w-8" />
@@ -36,8 +39,24 @@ function Navbar() {
           </span>
         </div>
       ),
-      label: "Cart", },
-    { to: "/login", icon: null, label: "Login", isButton: true },
+      label: "Cart",
+    },
+    // Conditional rendering for Login/Logout
+    isAuthenticated
+      ? {
+          to: "#",
+          icon: null,
+          label: "Logout",
+          isButton: true,
+          onClick: () => logout({ returnTo: window.location.origin }), // Handle logout
+        }
+      : {
+          to: "#",
+          icon: null,
+          label: "Login",
+          isButton: true,
+          onClick: () => loginWithRedirect(), // Handle login
+        },
   ];
 
   return (
@@ -52,9 +71,13 @@ function Navbar() {
       <div className="hidden md:flex space-x-6 items-center">
         {navItems.map((item, index) =>
           item.isButton ? (
-            <NavLink to={item.to} key={index} className="text-white">
-              <button>{item.label}</button>
-            </NavLink>
+            <button
+              key={index}
+              className="text-white"
+              onClick={item.onClick} // Handle button clicks for Login/Logout
+            >
+              {item.label}
+            </button>
           ) : (
             <NavLink
               to={item.to}
@@ -70,16 +93,15 @@ function Navbar() {
 
       {/* Mobile Menu Toggle */}
       <div className="md:hidden flex items-center z-[100001]">
-        {/* Conditional rendering for Hamburger and Close icons */}
         {isMenuOpen ? (
           <MdOutlineClose
             className="h-8 w-8 text-white cursor-pointer z-[100002]"
-            onClick={() => setIsMenuOpen(false)} // Close the menu
+            onClick={() => setIsMenuOpen(false)}
           />
         ) : (
           <PiHamburgerLight
             className="h-8 w-8 text-white cursor-pointer"
-            onClick={() => setIsMenuOpen(true)} // Open the menu
+            onClick={() => setIsMenuOpen(true)}
           />
         )}
       </div>
@@ -92,7 +114,10 @@ function Navbar() {
               to={item.to}
               key={index}
               className="flex items-center space-x-2 text-white text-2xl mb-4"
-              onClick={() => setIsMenuOpen(false)} // Close menu on link click
+              onClick={() => {
+                if (item.onClick) item.onClick(); // Handle click for Login/Logout in mobile view
+                setIsMenuOpen(false);
+              }}
             >
               {item.icon}
               <span>{item.label}</span>

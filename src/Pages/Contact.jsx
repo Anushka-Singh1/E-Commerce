@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm, ValidationError } from '@formspree/react';
-import { Detail } from '../Constant/ContactUs_Fields'; 
+import { Detail } from '../Constant/ContactUs_Fields';
 import Image from '../assets/Contact.png';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Style1 = "flex flex-wrap -mx-3 mb-1";
 const Style2 = "w-full px-3";
@@ -9,7 +10,19 @@ const Style3 = "block uppercase tracking-wide text-gray-700 text-xs font-bold mb
 const Style4 = "appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500";
 
 function Contact() {
-  const [state, handleSubmit] = useForm("meojjnyr"); 
+  const [state, handleSubmit] = useForm("meojjnyr");
+  const { user, isAuthenticated } = useAuth0(); // Destructure user and isAuthenticated
+  const [formValues, setFormValues] = useState({});
+
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      // Pre-fill form values if the user is authenticated
+      setFormValues({
+        name: user.name || "",
+        email: user.email || "",
+      });
+    }
+  }, [isAuthenticated, user]);
 
   if (state.succeeded) {
     return (
@@ -26,7 +39,6 @@ function Contact() {
 
   return (
     <div className="flex flex-col md:flex-row justify-center items-center md:items-start mt-20 md:mt-36 ml-1 mr-1 md:ml-[10vw] md:mr-[10vw] font-serif bg-gray-100 rounded-lg">
-      
       {/* Left Section for Image */}
       <div className="w-full md:w-1/2 p-10">
         <img
@@ -54,6 +66,7 @@ function Contact() {
                     id={item.name}
                     name={item.name}
                     placeholder={item.placeholder}
+                    defaultValue={formValues[item.name] || ""} // Pre-fill with Auth0 data
                   />
                 ) : (
                   <input
@@ -62,10 +75,11 @@ function Contact() {
                     type={item.type}
                     name={item.name}
                     placeholder={item.placeholder}
+                    defaultValue={formValues[item.name] || ""} // Pre-fill with Auth0 data
                   />
                 )}
-                <ValidationError 
-                  prefix={item.label} 
+                <ValidationError
+                  prefix={item.label}
                   field={item.name}
                   errors={state.errors}
                 />

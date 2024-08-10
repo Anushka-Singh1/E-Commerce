@@ -4,17 +4,13 @@ import FormatPrice from '../Helper/PriceFormat';
 import CartAmountToggle from '../Components/CartAmountToggle';
 import { FaTrash } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 
 function Cart() {
   const { cart, removeItem, clearCart, setDecrease, setIncrease, total_amount, shipping_fee } = useCartContext();
+  const{isAuthenticated, user}=useAuth0();
 
-  // const setDecrease = () => {
-  //   // amount > 1 ? setAmount(amount - 1) : setAmount(1);
-  // };
-
-  // const setIncrease = () => {
-  //   // amount < stock ? setAmount(amount + 1) : setAmount(stock);
-  // };
+  
   if(cart.length === 0) {
     return (
       <div className='flex flex-col items-center justify-center h-screen'>
@@ -32,6 +28,9 @@ function Cart() {
     <div className='flex flex-col min-h-screen'>
       <div className='flex-grow'>
         <div className='mt-36 ml-10 mr-10'>
+        <div className='flex justify-end my-2 font-serif text-gray-800 underline italic'>
+          {isAuthenticated && <h2 className='text-m font-medium'>Welcome, {user.name}!</h2>}
+        </div>
           <div className='grid grid-cols-4 sm:grid-cols-6 gap-6 bg-gray-200 p-4 font-serif'>
             <h2 className='text-lg font-semibold col-span-2'>Item</h2>
             <h2 className='text-lg font-semibold hidden sm:block'>Price</h2>
