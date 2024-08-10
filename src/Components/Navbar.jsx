@@ -9,12 +9,12 @@ import { BsCart4 } from "react-icons/bs";
 import { PiHamburgerLight } from "react-icons/pi";
 import { MdOutlineClose } from "react-icons/md";
 import { useCartContext } from "../Context/cartContext";
-import { useAuth0 } from "@auth0/auth0-react"; // Import useAuth0
+import { useAuth0 } from "@auth0/auth0-react"; 
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { total_item } = useCartContext();
-  const { loginWithRedirect, logout, isAuthenticated } = useAuth0(); // Destructure loginWithRedirect, logout, and isAuthenticated
+  const { loginWithRedirect, logout, isAuthenticated } = useAuth0(); 
 
   const navItems = [
     { to: "/", icon: <FaHome className="h-6 w-8" />, label: "Home" },
@@ -48,14 +48,14 @@ function Navbar() {
           icon: null,
           label: "Logout",
           isButton: true,
-          onClick: () => logout({ returnTo: window.location.origin }), // Handle logout
+          onClick: () => logout({ returnTo: window.location.origin }), 
         }
       : {
           to: "#",
           icon: null,
           label: "Login",
           isButton: true,
-          onClick: () => loginWithRedirect(), // Handle login
+          onClick: () => loginWithRedirect(), 
         },
   ];
 
@@ -74,7 +74,7 @@ function Navbar() {
             <button
               key={index}
               className="text-white"
-              onClick={item.onClick} // Handle button clicks for Login/Logout
+              onClick={item.onClick} 
             >
               {item.label}
             </button>
@@ -115,7 +115,7 @@ function Navbar() {
               key={index}
               className="flex items-center space-x-2 text-white text-2xl mb-4"
               onClick={() => {
-                if (item.onClick) item.onClick(); // Handle click for Login/Logout in mobile view
+                if (item.onClick) item.onClick(); 
                 setIsMenuOpen(false);
               }}
             >

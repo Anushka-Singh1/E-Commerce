@@ -12,7 +12,7 @@ const FilterReducer = (state, action) => {
             ...state.filters, 
             maxPrice: maxPrice, 
             price: maxPrice,
-            minPrice: Math.min(...priceArr) // Adding minPrice initialization
+            minPrice: Math.min(...priceArr) 
           },
         };
   

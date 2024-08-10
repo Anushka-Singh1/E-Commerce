@@ -11,7 +11,7 @@ const Style4 = "appearance-none block w-full bg-white text-gray-700 border borde
 
 function Contact() {
   const [state, handleSubmit] = useForm("meojjnyr");
-  const { user, isAuthenticated } = useAuth0(); // Destructure user and isAuthenticated
+  const { user, isAuthenticated } = useAuth0(); 
   const [formValues, setFormValues] = useState({});
 
   useEffect(() => {
@@ -66,7 +66,7 @@ function Contact() {
                     id={item.name}
                     name={item.name}
                     placeholder={item.placeholder}
-                    defaultValue={formValues[item.name] || ""} // Pre-fill with Auth0 data
+                    defaultValue={formValues[item.name] || ""} 
                   />
                 ) : (
                   <input
@@ -75,7 +75,7 @@ function Contact() {
                     type={item.type}
                     name={item.name}
                     placeholder={item.placeholder}
-                    defaultValue={formValues[item.name] || ""} // Pre-fill with Auth0 data
+                    defaultValue={formValues[item.name] || ""} 
                   />
                 )}
                 <ValidationError
