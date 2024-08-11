@@ -17,7 +17,7 @@ function Products() {
                 <SortSection />
               </div>
             </div>
-            <div className="main-product p-4 h-[32rem] overflow">
+            <div className="main-product p-4 pt-8 h-[32rem] overflow">
               <MainProductList />
             </div>
           </div>
