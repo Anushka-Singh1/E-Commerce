@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import { BrowserRouter } from 'react-router-dom'
-import { AppProvider } from './Context/ProductContext.jsx'
-import {FilterContextProvider} from './Context/FilterContext.jsx'
-import { CartProvider } from './Context/cartContext.jsx'
+// import { AppProvider } from './Context/ProductContext.jsx'
+// import {FilterContextProvider} from './Context/FilterContext.jsx'
+// import { CartProvider } from './Context/cartContext.jsx'
 import { Auth0Provider } from '@auth0/auth0-react'
+import { Provider } from 'react-redux'
+import store from './store/Store.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   
@@ -18,13 +20,15 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       redirect_uri: window.location.origin
     }}
   >
-  <AppProvider>
+  {/* <AppProvider>
   <FilterContextProvider>
-  <CartProvider>
+  <CartProvider> */}
+  <Provider store={store}>
     <App />
-  </CartProvider>
+  </Provider>
+  {/* </CartProvider>
     </FilterContextProvider>
-  </AppProvider>
+  </AppProvider> */}
   </Auth0Provider>
   </BrowserRouter>,
 
