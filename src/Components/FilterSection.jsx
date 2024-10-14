@@ -140,6 +140,7 @@ function FilterSection() {
               max={maxPrice}
               value={price}
               onChange={updateFilterValue}
+              className="accent-fuchsia-800"
             />
           </div>
         </div>

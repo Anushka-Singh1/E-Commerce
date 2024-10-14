@@ -1,6 +1,6 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import FormatPrice from "../Helper/PriceFormat";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import FormatPrice from '../Helper/PriceFormat';
 
 function ProductCard({ id, name, image, price, category }) {
   return (
@@ -18,9 +18,7 @@ function ProductCard({ id, name, image, price, category }) {
             </div>
             <div className="absolute inset-0 bg-fuchsia-900 bg-opacity-50 flex flex-col gap-2 items-center justify-center text-white text-lg font-bold opacity-0 hover:opacity-100 transition duration-300 ease-in-out rounded-lg">
               <div>{name}</div>
-              <div className="text-lg font-semibold">
-                {<FormatPrice price={price} />}
-              </div>
+              <div className="text-lg font-semibold">{<FormatPrice price={price} />}</div>
             </div>
           </div>
         </div>
