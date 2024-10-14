@@ -10,14 +10,14 @@ function Products() {
         <div className="lg:col-span-1 bg-gray-200 p-4 sticky top-0 rounded-xl overflow-auto">
           <FilterSection />
         </div>
-        <div className="lg:col-span-5 bg-gray-100 sticky rounded-xl">
+        <div className="lg:col-span-5 bg-gray-100 sticky rounded-xl scrollbar-hide overflow-auto">
           <div className="product-view-sort">
-            <div className="sticky top-0  p-4 rounded-md ">
-              <div className="sort-filter h-2 lg:h-2 rounded-xl ">
+            <div className="sticky top-0 p-4 rounded-md bg-gray-100 overflow-hidden">
+              <div className="bg-gray-100 h-12 lg:h-14 rounded-xl ">
                 <SortSection />
               </div>
             </div>
-            <div className="main-product p-4 pt-8 h-[32rem] overflow">
+            <div className="p-4 bg-gray-100 overflow-hidden">
               <MainProductList />
             </div>
           </div>

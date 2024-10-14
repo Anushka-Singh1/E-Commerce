@@ -1,13 +1,13 @@
-import React from 'react';
-import ProductCard from './ProductCard';
+import React from "react";
+import ProductCard from "./ProductCard";
 
 function GridView({ products }) {
   if (!products || !Array.isArray(products)) {
-    return <div>Loading...</div>; 
+    return <div>Loading...</div>;
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 h-full overflow-auto">
+    <div className="container bg-gray-100 grid grid-cols-1 min-[720px]:grid-cols-2 lg:grid-cols-3 gap-4 h-full overflow-auto">
       {products.map((curElem) => (
         <ProductCard key={curElem.id} {...curElem} />
       ))}

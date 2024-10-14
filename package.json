@@ -18,7 +18,8 @@
     "react-icons": "^5.2.1",
     "react-router-dom": "^6.23.1",
     "styled-components": "^6.0.0",
-    "stylis": "^4.0.0"
+    "stylis": "^4.0.0",
+    "tailwind-scrollbar-hide": "^1.1.7"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
