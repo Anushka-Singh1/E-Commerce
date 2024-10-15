@@ -11,15 +11,13 @@ function Products() {
           <FilterSection />
         </div>
         <div className="lg:col-span-5 bg-gray-100 rounded-xl scrollbar-hide overflow-auto">
-          <div className="product-view-sort">
-            <div className="sticky shadow-md top-0 p-4 rounded-t-md bg-gray-100 z-[99999] overflow-hidden">
-              <div className="bg-gray-100 h-8 lg:h-10 rounded-xl ">
-                <SortSection />
-              </div>
+          <div className="sticky shadow-md top-0 p-4 rounded-t-md bg-gray-100 z-[99999] overflow-hidden">
+            <div className="bg-gray-100 h-16 md:h-8 rounded-xl ">
+              <SortSection />
             </div>
-            <div className="p-4 overscroll-auto focus:overscroll-contain">
-              <MainProductList />
-            </div>
+          </div>
+          <div className="p-4 overflow overflow-auto">
+            <MainProductList />
           </div>
         </div>
       </div>
